@@ -1,0 +1,111 @@
+:root{
+    --dark-color: #0E0004;
+    --light-color: #FFFBFC;
+    --secondary-dark-color: #6B0F1A;
+    --accent-color: #31081F;
+}
+
+@font-face {
+    font-family: 'main-font';
+    src: url(fonts/BaseNeueTrial-Regular.ttf);
+}
+@font-face {
+    font-family: 'title-font';
+    src: url(fonts/BaseNeueTrial-Bold.ttf);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ===== Gallery Section ===== */
+#section-gallery {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+/* Example: simple grid for future images */
+#section-gallery .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+#section-gallery .gallery-grid img {
+  width: 100%;
+  border-radius: 6px;
+  background: #eee;
+}
+
+/* ===== About Section ===== */
+#section-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.profile-image {
+  width: 100%;
+  border-radius: 8px;
+  background: #ddd; /* placeholder color until image is added */
+}
+
+#section-about p {
+  margin-bottom: 10px;
+}
+
+/* ===== Links Section (Portfolio / Testimonials / Services) ===== */
+#section-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+#section-links > div {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+#section-links h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* ===== Contact Section ===== */
+#section-contact {
+  background: #fff;
+  padding: 30px 24px;
+  border: 1px solid #eee;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+
+  #section-about {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 30px 16px;
+  }
+}

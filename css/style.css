@@ -1,0 +1,93 @@
+:root{
+    --dark-color: #0E0004;
+    --light-color: #FFFBFC;
+    --secondary-dark-color: #6B0F1A;
+    --accent-color: #31081F;
+
+}
+
+@font-face {
+    font-family: 'main-font';
+    src: url(fonts/BaseNeueTrial-Regular.ttf);
+}
+@font-face {
+    font-family: 'title-font';
+    src: url(fonts/BaseNeueTrial-Bold.ttf);
+}
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--dark-color);
+  font-family: 'main-font';
+  background: var(--light-color);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'title-font';
+}
+
+a:hover {
+    color: var(--secondary-dark-color);
+    text-decoration: underline;
+}
+
+
+
+
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: 40px 20px 20px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+
+
+/* ===== Sections General ===== */
+section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  font-weight: 600;
+    
+}
+
+section p {
+  margin-bottom: 14px;
+}
