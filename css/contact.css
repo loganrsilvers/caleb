@@ -1,0 +1,78 @@
+/* Contact page – styles for elements inside <main> */
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Section spacing */
+main section {
+  margin-bottom: 40px;
+}
+
+/* Headings */
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+}
+
+main h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* Contact intro paragraph */
+.contact > p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Contact links list */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.contact-links li {
+  padding: 16px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-links strong {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.contact-links a {
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  main {
+    padding: 24px 16px;
+  }
+
+  main h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-links li {
+    padding: 14px 12px;
+    font-size: 0.95rem;
+  }
+}

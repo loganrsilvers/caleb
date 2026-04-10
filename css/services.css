@@ -1,0 +1,111 @@
+/* Services & Pricing page – styles for elements inside <main> */
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Section spacing */
+main section {
+  margin-bottom: 50px;
+}
+
+/* Headings */
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+}
+
+main h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+/* Services list */
+.services ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.services li {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Pricing section */
+.pricing p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.pricing table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pricing th,
+.pricing td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.pricing th {
+  font-weight: 600;
+}
+
+.pricing tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Booking section */
+.booking {
+  padding: 22px 26px;
+  border-radius: 8px;
+}
+
+.booking p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.booking a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.booking a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  main {
+    padding: 24px 16px;
+  }
+
+  main h2 {
+    font-size: 1.6rem;
+  }
+
+  .services ul {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing th,
+  .pricing td {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+}
