@@ -74,6 +74,78 @@ nav a {
 
 
 
+
+
+
+/* Navigation base styles */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative; /* Important for dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Dropdown menu - hidden by default */
+nav ul li.dropdown ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    flex-direction: column;
+    gap: 0;
+    z-index: 1000;
+}
+
+/* Dropdown links */
+nav ul li.dropdown ul li {
+    width: 100%;
+}
+
+nav ul li.dropdown ul li a {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+nav ul li.dropdown ul li:last-child a {
+    border-bottom: none;
+}
+
+nav ul li.dropdown ul {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+nav ul li.dropdown:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
 /* ===== Sections General ===== */
 section {
   padding: 40px 20px;
