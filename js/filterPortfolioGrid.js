@@ -1,39 +1,33 @@
-// Filter gallery by category
-function filterGallery(category) {
+document.addEventListener("DOMContentLoaded", () => {
+  // Filter gallery by category
+  function filterGallery(category) {
     const images = document.querySelectorAll('.gallery-image');
     
     images.forEach(img => {
-        if (category === 'all' || img.dataset.category === category) {
-            img.classList.remove('hidden');
-        } else {
-            img.classList.add('hidden');
-        }
+      if (category === 'all' || img.dataset.category === category) {
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
     });
-}
+  }
 
-// Add event listeners to filter buttons (you'll need to add these buttons)
-document.querySelectorAll('.filter-btn').forEach(btn => {
+  // Add event listeners to filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        const category = btn.dataset.filter;
-        filterGallery(category);
+      const category = btn.dataset.filter;
+      filterGallery(category);
     });
-});
+  });
 
-// Default: show all
-filterGallery('all');
+  // Default: show all
+  filterGallery('all');
 
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
+  // Masonry grid layout
   const gallery = document.querySelector(".gallery-grid");
   const images = gallery.querySelectorAll(".gallery-image");
 
   images.forEach(img => {
-    // Wait for each image to load before measuring
     img.addEventListener("load", () => {
       const rowHeight = parseInt(window.getComputedStyle(gallery).getPropertyValue("grid-auto-rows"));
       const rowGap = parseInt(window.getComputedStyle(gallery).getPropertyValue("gap"));
@@ -41,13 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
       img.style.gridRowEnd = `span ${rowSpan}`;
     });
 
-    // Handle cached images that might already be loaded
     if (img.complete) {
       img.dispatchEvent(new Event("load"));
     }
   });
 
-  // Optional: adjust on window resize
   window.addEventListener("resize", () => {
     images.forEach(img => {
       const rowHeight = parseInt(window.getComputedStyle(gallery).getPropertyValue("grid-auto-rows"));

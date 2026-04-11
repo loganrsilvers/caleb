@@ -28,9 +28,10 @@
 
 body {
   line-height: 1.6;
-  color: var(--dark-color);
+  color: var(--light-color);
   font-family: 'main-font';
-  background: var(--light-color);
+  background: var(--dark-color);
+  background-image: url(../img/textures/low-contrast-linen.png);
 }
 
 h1, h2, h3, h4 {
@@ -49,14 +50,18 @@ a:hover {
 header {
   text-align: center;
   padding: 40px 20px 20px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-image: url(../img/textures/basketball.png);
+  border-bottom: 1px solid #f0f0f0;
 }
 
 header h1 {
     margin-bottom: 12px;
     letter-spacing: 0.5px;
 }
+
+
+
+
 
 nav ul {
   list-style: none;
@@ -97,50 +102,6 @@ nav ul li a {
     display: block;
 }
 
-/* Dropdown menu - hidden by default */
-nav ul li.dropdown ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    flex-direction: column;
-    gap: 0;
-    z-index: 1000;
-}
-
-/* Dropdown links */
-nav ul li.dropdown ul li {
-    width: 100%;
-}
-
-nav ul li.dropdown ul li a {
-    padding: 12px 15px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-nav ul li.dropdown ul li:last-child a {
-    border-bottom: none;
-}
-
-nav ul li.dropdown ul {
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.2s, transform 0.2s;
-}
-
-nav ul li.dropdown:hover ul {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-
-
 
 
 
@@ -162,4 +123,9 @@ section h2 {
 
 section p {
   margin-bottom: 14px;
+}
+
+
+button {
+  font-family: 'main-font';
 }
