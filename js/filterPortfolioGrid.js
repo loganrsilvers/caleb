@@ -1,59 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const gallery = document.querySelector(".gallery-grid");
+  let rowHeight, rowGap;
+
+  function cacheGridStyle() {
+    const style = getComputedStyle(gallery);
+    rowHeight = parseInt(style.getPropertyValue("grid-auto-rows"));
+    rowGap    = parseInt(style.getPropertyValue("gap"));
+  }
 
   function setSpan(el) {
-    const rowHeight = parseInt(getComputedStyle(gallery).getPropertyValue("grid-auto-rows"));
-    const rowGap    = parseInt(getComputedStyle(gallery).getPropertyValue("gap"));
-    const height    = el.getBoundingClientRect().height;
-    if (height === 0) return; // skip until element has real height
-    const span = Math.ceil((height + rowGap) / (rowHeight + rowGap));
-    el.style.gridRowEnd = `span ${span}`;
+    const height = el.getBoundingClientRect().height;
+    if (height === 0) return;
+    el.style.gridRowEnd = `span ${Math.ceil((height + rowGap) / (rowHeight + rowGap))}`;
   }
 
   function recalcAll() {
-    gallery.querySelectorAll(".gallery-image:not(.shutter-image)").forEach(el => setSpan(el));
-    gallery.querySelectorAll(".shutter-group").forEach(el => setSpan(el));
+    cacheGridStyle(); // read once per pass, not once per element
+    gallery.querySelectorAll(".gallery-image:not(.shutter-image)").forEach(setSpan);
+    gallery.querySelectorAll(".shutter-group").forEach(setSpan);
   }
 
-  // Run on each image load
-  gallery.querySelectorAll(".gallery-image:not(.shutter-image)").forEach(img => {
-    img.addEventListener("load", () => setSpan(img));
-    if (img.complete) setSpan(img);
+  // ResizeObserver fires when an image's box actually changes — no blind timeouts
+  const ro = new ResizeObserver(() => recalcAll());
+  gallery.querySelectorAll(".gallery-image:not(.shutter-image), .shutter-group").forEach(el => {
+    ro.observe(el);
   });
 
-  // Run on first image load inside each shutter group
+  // Initial spans on image load
+  gallery.querySelectorAll(".gallery-image:not(.shutter-image)").forEach(img => {
+    if (img.complete) setSpan(img);
+    else img.addEventListener("load", () => setSpan(img), { once: true });
+  });
+
   gallery.querySelectorAll(".shutter-group").forEach(group => {
     const first = group.querySelector(".shutter-image");
     if (!first) return;
-    first.addEventListener("load", () => setSpan(group));
     if (first.complete) setSpan(group);
+    else first.addEventListener("load", () => setSpan(group), { once: true });
   });
 
-  // Belt-and-suspenders: recalc after full page load and after a short delay
-  window.addEventListener("load", () => {
-    recalcAll();
-    setTimeout(recalcAll, 300); // catches any late-rendering images
+  // Debounced resize (fires once after user stops resizing, not on every pixel)
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(recalcAll, 150);
   });
 
-  window.addEventListener("resize", recalcAll);
+  window.addEventListener("load", recalcAll, { once: true });
 
   // --- Filter ---
   function filterGallery(category) {
     gallery.querySelectorAll(".gallery-image:not(.shutter-image)").forEach(img => {
-      const match = category === "all" || img.dataset.category === category;
-      img.classList.toggle("hidden", !match);
+      img.classList.toggle("hidden", category !== "all" && img.dataset.category !== category);
     });
-
     gallery.querySelectorAll(".shutter-group").forEach(group => {
-      const match = category === "all" || group.dataset.category === category;
-      group.classList.toggle("hidden", !match);
-      // Recalc spans after filter since layout shifts
-      if (!match === false) setTimeout(() => setSpan(group), 50);
+      group.classList.toggle("hidden", category !== "all" && group.dataset.category !== category);
     });
-
-    // Recalc masonry after any filter change
-    setTimeout(recalcAll, 100);
+    // One recalc after all DOM changes are done
+    requestAnimationFrame(recalcAll);
   }
 
   document.querySelectorAll(".filter-btn").forEach(btn => {

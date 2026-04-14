@@ -31,10 +31,12 @@ function enableShutterGroups(gridSelector, imageSelector) {
         const duration = images.length * delayStep;
 
         images.forEach((img, index) => {
-        img.classList.add('shutter-image');
-        img.style.animationDelay = `${index * delayStep}s`;
-        img.style.animationDuration = `${duration}s`; // override per group
-        container.appendChild(img);
+        // inside the forEach where you set animationDelay:
+          img.classList.add('shutter-image');
+          img.style.animationDelay    = `${index * delayStep}s`;
+          img.style.animationDuration = `${duration}s`;
+          img.style.willChange        = 'opacity, transform'; // GPU layer for animation
+          container.appendChild(img);
         });
 
         placeholder.parentNode.insertBefore(container, placeholder);
