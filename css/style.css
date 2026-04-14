@@ -129,3 +129,44 @@ section p {
 button {
   font-family: 'main-font';
 }
+
+/* ===== Footer ===== */
+footer {
+  background-image: url(../img/textures/basketball.png);
+  padding: 20px 24px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+#footer-nav ul {
+  justify-content: center;
+  gap: 20px;
+  display: flex;
+}
+
+#footer-nav a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+#footer-nav a:hover {
+  text-decoration: underline;
+}
+
+footer a {
+  color: var(--light-color);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

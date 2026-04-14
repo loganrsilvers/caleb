@@ -1,0 +1,66 @@
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+main section {
+    margin-bottom: 3rem;
+}
+
+main section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+main section p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+main section p:last-of-type {
+    margin-bottom: 0;
+}
+
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+main table th,
+main table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid;
+}
+
+main table th {
+    font-weight: 600;
+    text-align: center;
+}
+
+main table td {
+    text-align: center;
+}
+
+main table tr:first-child th {
+    padding-top: 0;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1.5rem;
+    }
+
+    main section h2 {
+        font-size: 1.5rem;
+    }
+
+    main section p {
+        text-align: left;
+    }
+}
